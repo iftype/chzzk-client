@@ -1,0 +1,9 @@
+{
+  "name": "chzzk-client",
+  "version": "1.0.0",
+  "description": "SPA to vanilla JS",
+  "main": "client/main.js",
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
