@@ -6,13 +6,14 @@ export default class Component {
     this.$target = $target;
     this.props = props;
     this.state = this.initState();
+    this.setup();
     this.render();
     this.componentDidMount();
   }
-
   initState() {
     return {};
   }
+  setup() {}
 
   setState(newState) {
     this.state = { ...this.state, ...newState };
