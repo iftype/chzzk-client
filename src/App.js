@@ -34,8 +34,7 @@ export default class App extends Component {
       if (e.target.matches("[data-link]")) {
         e.preventDefault();
         const href = e.target.getAttribute("href");
-        const path = href.replace(/^#/, "");
-        router.navigate(path);
+        router.navigate(href);
       }
     });
   }
