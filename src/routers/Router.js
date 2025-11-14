@@ -11,8 +11,6 @@ export default class Router {
   }
 
   navigate(path) {
-    const fullPath = path;
-
     const hashPath = path.startsWith("#") ? path : "#" + path;
     window.location.hash = hashPath;
   }
