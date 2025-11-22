@@ -1,4 +1,4 @@
-const BASE_URL = "http://146.56.118.89";
+const BASE_URL = "https://iftype.store";
 
 export async function fetchStreamer() {
   try {
