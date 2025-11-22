@@ -43,5 +43,13 @@ export default class App extends Component {
       const href = link.getAttribute("href");
       router.navigate(href);
     });
+
+    // 이벤트 버블링 사용
+    this.$target.addEventListener("navigateCard", (e) => {
+      const channelId = e.detail;
+      e.preventDefault();
+      const path = Object.keys(Router.CHANNELS).find((key) => Router.CHANNELS[key] === channelId);
+      router.navigate(`#/streamer/${path}`);
+    });
   }
 }

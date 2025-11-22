@@ -17,17 +17,13 @@ export default class ChannelCard extends Component {
   }
 
   componentDidMount() {
-    this.$wrapper.addEventListener("click", (e) => {
-      console.log("object");
-      const link = e.target.closest("[data-link]");
-      if (!link) return;
-
-      e.preventDefault();
-      const { channelId } = this.state;
-      if (true) {
-        const routePath = `#/streamer/${channelId}`;
-        router.navigate(routePath);
-      }
+    this.$wrapper.addEventListener("click", () => {
+      this.$wrapper.dispatchEvent(
+        new CustomEvent("navigateCard", {
+          detail: this.props.channelId,
+          bubbles: true,
+        })
+      );
     });
   }
 }
