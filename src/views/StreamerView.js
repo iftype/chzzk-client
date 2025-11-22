@@ -1,42 +1,79 @@
-import { fetchStreamerData } from "../api/api.js";
 import Component from "../core/Component.js";
-
-// client/view/StreamerView.js
+import Store from "../store/GlobalStore.js";
+import { fetchStreamerLogData } from "../api/api.js";
+import LiveLogContainer from "../components/LiveLogContainer.js";
+import ProfileHeader from "../components/ProfileHeader.js";
 export default class StreamerView extends Component {
   initState() {
     return {
-      content: {
-        channel: null,
+      channel: {
+        channelName: "",
+        channelImageUrl: "",
       },
-      error: null,
+      liveLogList: [],
       isLoading: true,
     };
   }
+
   async setup() {
-    const content = await fetchStreamerData();
     try {
+      const { id } = this.props;
+      const channel = Store.getChannel(id);
       this.setState({
-        content,
-        isLodaing: false,
+        channel: channel,
       });
-    } catch (error) {
-      console.log(error.message);
-      this.setState({ isLoading: false });
+
+      const liveLogList = await fetchStreamerLogData(id);
+      this.setState({
+        liveLogList: liveLogList,
+        isLoading: false,
+      });
+    } catch (err) {
+      console.log(err);
     }
   }
 
   template() {
-    const { id } = this.props;
-    const { isLodaing, content } = this.state;
-    const { channel } = content;
-    console.log(this.state.data);
+    const { liveLogList } = this.state;
+    if (liveLogList.length === 0) {
+      return `
+          <div id="profile-header-container"></div>
+          <div id="live-log-list-container"></div>
+          <div>저장된 방송 기록이 존재하지 않습니다</div>
+          <div>(2025-11-23 기준)</div>
+      `;
+    }
     return `
-            <h1>스트리머 페이지</h1>
-       
-            <p>props 스트리머 ID: <b>${id}</b></p>
-            <p>state.channel 스트리머 ID: <b>${
-              isLodaing ? "로딩중" : channel
-            }</b></p>
-        `;
+    <div id="profile-header-container"></div>
+    <div id="live-log-list-container"></div>
+    `;
+  }
+  componentDidMount() {
+    this.createProfileHeaderContainer();
+    this.createLiveLogContainer();
+  }
+  componentDidUpdate() {
+    this.createProfileHeaderContainer();
+    this.createLiveLogContainer();
+  }
+
+  createProfileHeaderContainer() {
+    const $container = this.$wrapper.querySelector("#profile-header-container");
+    $container.innerHTML = "";
+    new ProfileHeader($container, this.state.channel);
+  }
+
+  createLiveLogContainer() {
+    const { liveLogList, isLoading } = this.state;
+    if (isLoading || !liveLogList) return;
+
+    const $container = this.$wrapper.querySelector("#live-log-list-container");
+
+    $container.innerHTML = "";
+
+    console.log(liveLogList);
+    liveLogList.forEach((liveLog) => {
+      new LiveLogContainer($container, { liveLog });
+    });
   }
 }
