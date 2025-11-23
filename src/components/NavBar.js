@@ -9,7 +9,7 @@ export default class NavBar extends Component {
         <a href="#/streamer/goob" data-link>박종우</a>
         <a href="#/streamer/dopa" data-link>도파</a>
         <a href="#/streamer/monstrat" data-link>괴물쥐</a>
-        <a href="#/streamer/" data-link>스틸로</a>
+        <a href="#/streamer/steelo" data-link>스틸로</a>
       </nav>
     `;
   }
