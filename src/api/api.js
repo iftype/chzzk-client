@@ -35,13 +35,13 @@ export async function fetchStreamerData(channelId) {
 export async function fetchStreamerLogData(channelId, date) {
   try {
     const url = date ? `${BASE_URL}/log/${channelId}?date=${date}` : `${BASE_URL}/log/${channelId}`;
-
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const content = await response.json();
     const { data } = content;
+    console.log(data);
     return data;
   } catch (error) {
     console.error("API 호출 중 오류 발생:", error);

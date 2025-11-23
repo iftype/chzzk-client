@@ -15,7 +15,6 @@ export default class LiveLogContainer extends Component {
 
   template() {
     const { logTime, closeDate, videoNo } = this.state;
-    console.log(videoNo);
     return `
     <div class="live-log-card-date">
       ${this.checkToday() ? "TODAY" : logTime}
