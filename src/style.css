@@ -180,6 +180,10 @@ header {
   color: #00ffa3;
 }
 
+.live-text-video {
+  color: #66c4d1;
+}
+
 #live-log-card {
   display: flex;
   gap: 0.5rem;
