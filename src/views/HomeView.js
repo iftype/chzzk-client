@@ -22,7 +22,7 @@ export default class HomeView extends Component {
     const { isLoading } = this.state;
 
     return `
-      <h1>카테고리 변경 기록 사이트</h1>
+      <h1>라이브 변경 내역 기록 사이트</h1>
       ${isLoading ? `<p>로딩중...</p>` : ""} 
       <div id="channel-list-container"></div>
     `;
