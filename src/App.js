@@ -22,7 +22,6 @@ export default class App extends Component {
 
     try {
       await Store.loadChannelList();
-      console.log("전역 채널 데이터 로딩 완료");
     } catch (err) {
       console.error("채널 데이터 로딩 실패", err);
     }

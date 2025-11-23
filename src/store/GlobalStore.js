@@ -17,7 +17,6 @@ class GlobalStore {
     channelList.forEach((channel) => {
       map.set(channel.channelId, channel);
     });
-    console.log(channelList);
 
     this.state.channelList = map;
     this.state.channelListLoaded = true;

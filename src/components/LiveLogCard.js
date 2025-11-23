@@ -19,8 +19,6 @@ export default class LiveLogCard extends Component {
     const { categoryImageUrl, categoryValue } = this.state.category;
     const { title, logTime } = this.state;
 
-    console.log(this.props);
-
     return `
       <img src="${categoryImageUrl}" class="LiveLogCard-image"/>
       <div class="LiveLogCard-info">

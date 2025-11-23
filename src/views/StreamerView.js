@@ -29,7 +29,7 @@ export default class StreamerView extends Component {
         isLoading: false,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 
@@ -71,7 +71,6 @@ export default class StreamerView extends Component {
 
     $container.innerHTML = "";
 
-    console.log(liveLogList);
     liveLogList.forEach((liveLog) => {
       new LiveLogContainer($container, { liveLog });
     });

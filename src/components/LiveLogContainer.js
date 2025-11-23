@@ -13,7 +13,6 @@ export default class LiveLogContainer extends Component {
 
   template() {
     const { logTime, closeDate } = this.state;
-    console.log(this.props.liveLog[0].closeDate);
     return `
     <div class="live-log-card-date">
       ${this.checkToday() ? "TODAY" : logTime}
@@ -36,7 +35,6 @@ export default class LiveLogContainer extends Component {
 
     const $container = this.$wrapper.querySelector("#live-log-card");
     $container.innerHTML = "";
-    console.log(liveLog);
     liveLog.forEach((session) => {
       new LiveLogCard($container, session);
     });

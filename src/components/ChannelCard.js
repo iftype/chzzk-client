@@ -9,7 +9,6 @@ export default class ChannelCard extends Component {
 
   template() {
     const { channelId, channelName, channelImageUrl } = this.props;
-    console.log(channelId);
     return `
       <img src="${channelImageUrl}" class="channel-image" alt="${channelName}" />
       <h3 class="channel-name">${channelName}</h3>
