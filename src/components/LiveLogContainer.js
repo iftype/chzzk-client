@@ -1,6 +1,7 @@
 import Component from "../core/Component.js";
 import { formatDateYM } from "../utils/formatDate.js";
 import LiveLogCard from "./LiveLogCard.js";
+
 export default class LiveLogContainer extends Component {
   initState() {
     return {
